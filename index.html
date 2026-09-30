@@ -19,34 +19,73 @@
 </head>
 <body>
 
-    <div class="hero">
-        <h1>Etude & Code</h1>
-        <p>Aesthetics Meet Tech & Study</p>
-    </div>
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar"></div>
 
-    <div class="content">
-        <h2>Scroll down to test the physics</h2>
-        <div class="box"></div>
-    </div>
+    <!-- Split Screen Hero / Article Section -->
+    <section class="split-screen">
+        
+        <!-- Left Side: Fixed Cover Visual -->
+        <div class="left-fixed">
+            <h1>Tech & Setup</h1>
+        </div>
 
+        <!-- Right Side: Natural Scrolling Content -->
+        <div class="right-scroll">
+            <div class="article-content">
+                <h2>The Minimalist Workspace</h2>
+                <p>Building a high-end, aesthetic workspace requires careful curation of tech and stationery. As you scroll down this page, notice how the image on the left remains perfectly locked in place while this text glides past.</p>
+                <p>This split-screen technique is ideal for editorial and design blogs, keeping the reading experience highly immersive without losing visual context.</p>
+                
+                <h2>Electronic Components</h2>
+                <p>When reviewing microcontrollers or coding projects, keeping the product shot visible while the user reads the specs reduces cognitive load and creates a premium feel.</p>
+            </div>
+
+            <!-- Sticky Reading Indicator / Navigation -->
+            <div class="sticky-sidebar">
+                <h3>In this article</h3>
+                <ul>
+                    <li>The Minimalist Workspace</li>
+                    <li>Electronic Components</li>
+                    <li>Share to Pinterest</li>
+                </ul>
+            </div>
+
+            <!-- Scroll Spacer -->
+            <div style="height: 100vh;"></div>
+        </div>
+    </section>
+
+    <!-- Animation Logic -->
     <script>
-        // Initialize Smooth Scrolling
-        const lenis = new Lenis();
+        // 1. Register GSAP Plugins first
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 2. Initialize Lenis Smooth Scrolling
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true
+        });
+
         lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => { lenis.raf(time * 1000) });
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
         gsap.ticker.lagSmoothing(0);
 
-        // Scroll Animation
-        gsap.to(".box", {
+        // 3. Scroll-Driven Progress Bar Animation
+        gsap.to(".progress-bar", {
+            width: "100%",
+            ease: "none",
             scrollTrigger: {
-                trigger: ".box",
-                start: "top 80%", 
-                end: "bottom 20%",
-                scrub: true
-            },
-            x: 300,
-            rotation: 360,
-            duration: 3
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.1
+            }
         });
     </script>
 </body>
