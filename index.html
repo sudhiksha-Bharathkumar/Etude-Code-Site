@@ -1,94 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etude & Code | Aesthetic Tech & Study</title>
-    <!-- Animation Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis/dist/lenis.min.js"></script>
-    <meta name="p:domain_verify" content="c90ae61ed3c6632a0505bb44db0538a6"/>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis/dist/lenis.css">
-    <style>
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #fdfbf7; color: #333; }
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-size: 4rem; margin-bottom: 10px; }
-        .content { height: 150vh; padding: 50px; }
-        .box { width: 100px; height: 100px; background: #c9a997; margin-top: 50px; border-radius: 12px; }
-    </style>
-</head>
-<body>
-
-    <!-- Scroll Progress Bar -->
-    <div class="progress-bar"></div>
-
-    <!-- Split Screen Hero / Article Section -->
-    <section class="split-screen">
-        
-        <!-- Left Side: Fixed Cover Visual -->
-        <div class="left-fixed">
-            <h1>Tech & Setup</h1>
-        </div>
-
-        <!-- Right Side: Natural Scrolling Content -->
-        <div class="right-scroll">
-            <div class="article-content">
-                <h2>The Minimalist Workspace</h2>
-                <p>Building a high-end, aesthetic workspace requires careful curation of tech and stationery. As you scroll down this page, notice how the image on the left remains perfectly locked in place while this text glides past.</p>
-                <p>This split-screen technique is ideal for editorial and design blogs, keeping the reading experience highly immersive without losing visual context.</p>
-                
-                <h2>Electronic Components</h2>
-                <p>When reviewing microcontrollers or coding projects, keeping the product shot visible while the user reads the specs reduces cognitive load and creates a premium feel.</p>
-            </div>
-
-            <!-- Sticky Reading Indicator / Navigation -->
-            <div class="sticky-sidebar">
-                <h3>In this article</h3>
-                <ul>
-                    <li>The Minimalist Workspace</li>
-                    <li>Electronic Components</li>
-                    <li>Share to Pinterest</li>
-                </ul>
-            </div>
-
-            <!-- Scroll Spacer -->
-            <div style="height: 100vh;"></div>
-        </div>
-    </section>
-
-    <!-- Animation Logic -->
-    <script>
-        // 1. Register GSAP Plugins first
-        gsap.registerPlugin(ScrollTrigger);
-
-        // 2. Initialize Lenis Smooth Scrolling
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smoothWheel: true
-        });
-
-        lenis.on('scroll', ScrollTrigger.update);
-
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-
-        gsap.ticker.lagSmoothing(0);
-
-        // 3. Scroll-Driven Progress Bar Animation
-        gsap.to(".progress-bar", {
-            width: "100%",
-            ease: "none",
-            scrollTrigger: {
-                trigger: "body",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 0.1
-            }
-        });
-    </script>
-</body>
-</html>
+---
+layout: default
+---
+<div class="main-feed">
+    <h2 class="section-title">LATEST PROJECT SETUPS</h2>
+    
+    <div class="cards-grid">
+        <!-- This loop automatically fetches your markdown blog posts -->
+        {% for post in site.posts %}
+        <a href="{{ post.url | relative_url }}" class="post-card">
+            <img src="{{ post.image }}" alt="{{ post.title }}">
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</div>
