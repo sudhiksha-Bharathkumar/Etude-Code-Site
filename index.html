@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etude & Code | Aesthetic Tech & Study</title>
+    <!-- Animation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis/dist/lenis.css">
+    <style>
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #fdfbf7; color: #333; }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-size: 4rem; margin-bottom: 10px; }
+        .content { height: 150vh; padding: 50px; }
+        .box { width: 100px; height: 100px; background: #c9a997; margin-top: 50px; border-radius: 12px; }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>Etude & Code</h1>
+        <p>Aesthetics Meet Tech & Study</p>
+    </div>
+
+    <div class="content">
+        <h2>Scroll down to test the physics</h2>
+        <div class="box"></div>
+    </div>
+
+    <script>
+        // Initialize Smooth Scrolling
+        const lenis = new Lenis();
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000) });
+        gsap.ticker.lagSmoothing(0);
+
+        // Scroll Animation
+        gsap.to(".box", {
+            scrollTrigger: {
+                trigger: ".box",
+                start: "top 80%", 
+                end: "bottom 20%",
+                scrub: true
+            },
+            x: 300,
+            rotation: 360,
+            duration: 3
+        });
+    </script>
+</body>
+</html>
