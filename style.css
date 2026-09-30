@@ -84,3 +84,78 @@ body {
     color: #666666;
     line-height: 1.8;
 }
+/* Blog & Product Grid Layout */
+.page-header {
+    text-align: center;
+    padding: 150px 20px 80px;
+    background-color: #fdfbf7;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin: 0 0 15px;
+}
+
+.page-header p {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    padding: 0 80px 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.reveal-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+}
+
+.reveal-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image {
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+}
+
+.card-content {
+    padding: 30px;
+}
+
+.category {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #c9a997;
+    font-weight: bold;
+}
+
+.card-content h2 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    line-height: 1.3;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #1d1d1f;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.read-more:hover {
+    border-color: #c9a997;
+}
