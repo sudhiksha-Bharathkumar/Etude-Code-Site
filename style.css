@@ -159,3 +159,119 @@ body {
 .read-more:hover {
     border-color: #c9a997;
 }
+/* Article Header Styling */
+.article-header {
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+.header-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    width: 100%;
+    padding: 80px;
+    color: white;
+}
+
+.header-overlay h1 {
+    font-size: 4rem;
+    margin: 10px 0;
+    max-width: 900px;
+    letter-spacing: -1px;
+}
+
+.publish-date {
+    color: #cccccc;
+    font-size: 1.1rem;
+}
+
+/* Article Grid Layout */
+.article-container {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 40px;
+}
+
+.article-body {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: #333333;
+}
+
+.lead-paragraph {
+    font-size: 1.5rem;
+    color: #555555;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.article-body h2 {
+    font-size: 2.2rem;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    color: #1d1d1f;
+}
+
+.article-image {
+    width: 100%;
+    border-radius: 12px;
+    margin: 40px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+blockquote {
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #c9a997;
+    margin: 60px 0;
+    padding-left: 30px;
+    border-left: 4px solid #c9a997;
+}
+
+/* Sidebar Styling */
+.sidebar-container {
+    position: relative;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0;
+}
+
+.toc-list li {
+    margin-bottom: 12px;
+}
+
+.toc-list a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.toc-list a:hover {
+    color: #c9a997;
+}
+
+.share-buttons button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #f0ebe6;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.share-buttons button:hover {
+    background: #eaddd7;
+}
