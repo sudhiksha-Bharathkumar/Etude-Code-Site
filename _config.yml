@@ -1,4 +1,8 @@
 name: Etude & Code
-description: Minimalist Tech & Project Setups
+description: A minimalist tech and project setup blog.
 theme: minima
 future: true
+
+collections:
+  posts:
+    output: true
