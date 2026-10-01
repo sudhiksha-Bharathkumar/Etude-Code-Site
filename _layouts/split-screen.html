@@ -2,7 +2,6 @@
 layout: default
 ---
 <section class="split-screen">
-    <!-- Dynamically pulls the hardware image you set in your blog post -->
     <div class="left-fixed" style="background-image: url('{{ page.image }}');"></div>
     
     <div class="right-scroll">
@@ -12,8 +11,8 @@ layout: default
             
             {{ content }}
             
-            <!-- Button linking to your open-source code or Amazon affiliate -->
-            <a href="{{ page.github_link }}" class="btn-primary" target="_blank">View Project Links</a>
+            <!-- Affiliate / Project Link Button -->
+            <a href="{{ page.external_link }}" class="btn-primary" target="_blank">{{ page.link_text }}</a>
         </div>
     </div>
 </section>
