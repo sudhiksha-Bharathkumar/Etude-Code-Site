@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: "Etude & Code" }}</title>
-    
-    <!-- Pinterest Verification -->
-    <meta name="p:domain_verify" content="c90ae61ed3c6632a0505bb44db0538a6" />
-    
-    <!-- Link to your CSS -->
     <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
     
     <!-- GSAP & Lenis Animation Libraries -->
@@ -19,7 +14,6 @@
 </head>
 <body>
 
-    <!-- The Universal Navigation Bar -->
     <nav class="navbar">
         <div class="logo"><a href="{{ '/' | relative_url }}">Etude & Code</a></div>
         <ul class="nav-links">
@@ -31,18 +25,22 @@
         </ul>
     </nav>
 
-    <!-- This tag magically injects whatever you type in your blog posts -->
     <main class="page-content">
         {{ content }}
     </main>
 
-    <!-- Global Animation Logic -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
         const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add((time) => { lenis.raf(time * 1000); });
         gsap.ticker.lagSmoothing(0);
+
+        // Staggered Blog Card Animation
+        gsap.to(".reveal-card", {
+            scrollTrigger: { trigger: ".cards-grid", start: "top 85%" },
+            y: 0, opacity: 1, duration: 0.8, ease: "power2.out", stagger: 0.2 
+        });
     </script>
 </body>
 </html>
